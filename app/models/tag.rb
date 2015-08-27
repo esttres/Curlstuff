@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
 
-  belongs_to :gnote
+  has_many :taggings
+  has_many :gnotes, through: :taggings
 
 
 end
