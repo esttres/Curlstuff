@@ -9,17 +9,13 @@
 
 5.times do
 
-  (1..3).each do |range|
+  gnote = Gnote.create(title: FFaker::Lorem.sentence, body: FFaker::Lorem.sentence)
 
-    Gnote.create(title: Faker::Lorem.sentence, body: Faker::Lorem.sentence(3, true, 4), tag_id: range)
+  3.times do
+
+    tag = Tag.create(name: FFaker::Lorem.word)
+    gnote.tags << tag
 
   end
-
-
-end
-
-%w(Terrible Horrible Waste_of_Time).each do |tag|
-
-  Tag.create(name: tag)
 
 end

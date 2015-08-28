@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.2.2"
 
 gem 'rails', '4.2.3'
 
@@ -14,10 +15,15 @@ gem 'rename'
 
 gem 'active_model_serializers'
 
-gem 'faker'
+gem 'ffaker'
 
 gem 'pry-byebug'
 
+gem 'rails_12factor', group: :production
+
+gem 'brakeman'
+
+gem 'figaro'
 
 
 # To use ActiveModel has_secure_password

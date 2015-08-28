@@ -7,10 +7,12 @@ class GnotesController < ApplicationController
 
   def create
     @gnote = Gnote.new(gnote_params)
-    tags = params[:tags].split(",").collect(&:strip)
-    if @gnote.save
-      tags.each do |tag|
-        @gnote.tags << Tag.create(name: tag)
+    if params[:tags]
+      tags = params[:tags].split(",").collect(&:strip)
+      if @gnote.save
+        tags.each do |tag|
+          @gnote.tags << Tag.create(name: tag)
+        end
       end
       render :json => @gnote, serializer: GnoteSerializer
     else
