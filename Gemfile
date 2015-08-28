@@ -14,6 +14,10 @@ gem 'rename'
 
 gem 'active_model_serializers'
 
+gem 'faker'
+
+gem 'pry-byebug'
+
 
 
 # To use ActiveModel has_secure_password

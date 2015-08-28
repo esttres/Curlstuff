@@ -2,7 +2,7 @@ class GnotesController < ApplicationController
 
   def index
     @gnotes = Gnote.all
-    render :json => @gnotes, serializer: GnoteSerializer
+    render :json => @gnotes, each_serializer: GnoteSerializer
   end
 
   def create
@@ -10,8 +10,7 @@ class GnotesController < ApplicationController
     tags = params[:tags].split(",").collect(&:strip)
     if @gnote.save
       tags.each do |tag|
-        @note.tags << Tag.create(name: tag)
-          @note.save!
+        @gnote.tags << Tag.create(name: tag)
       end
       render :json => @gnote, serializer: GnoteSerializer
     else
@@ -29,7 +28,7 @@ class GnotesController < ApplicationController
   private
 
   def gnote_params
-    params.permit(:title, :body, :tag_id)
+    params.permit(:title, :body)
   end
 
 
